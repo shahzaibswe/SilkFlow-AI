@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  chain:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm ci && npx hardhat node --hostname 0.0.0.0 && sleep 999999"
+    volumes:
+      - ./contracts:/app
+    ports:
+      - "8545:8545"
+
+  deployer:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "sleep 12 && npx hardhat run scripts/deploy.js --network localhost && sleep 999999"
+    volumes:
+      - ./contracts:/app
+    depends_on:
+      - chain
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    env_file:
+      - .env
+    environment:
+      CHAIN_RPC_URL: http://chain:8545
+      CONTRACT_DEPLOYMENT_FILE: /app/contracts/deployments/latest.json
+    volumes:
+      - ./contracts/deployments:/app/contracts/deployments
+      - api-data:/app/api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - deployer
+
+  dashboard:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
+    environment:
+      VITE_API_TARGET: http://api:8000
+    volumes:
+      - ./dashboard:/app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
+volumes:
+  api-data:

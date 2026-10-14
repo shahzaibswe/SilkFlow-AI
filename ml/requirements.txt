@@ -1,0 +1,17 @@
+# SilkFlow AI - ML subsystem requirements
+# Core (required when wheels exist for this Python; the ml package degrades
+# gracefully to pure-stdlib implementations if they are missing, e.g. on
+# very new Python versions such as 3.15):
+numpy
+pandas
+scikit-learn
+joblib
+
+# OPTIONAL - install if wheels are available for your Python.
+# The package auto-detects and falls back:
+#   xgboost missing -> sklearn LogisticRegression baseline
+#                     (or pure-Python logistic regression if sklearn is also out)
+#   shap missing    -> coefficient / baseline-perturbation attribution fallback
+# To install them explicitly:  pip install xgboost shap
+xgboost  # OPTIONAL
+shap     # OPTIONAL

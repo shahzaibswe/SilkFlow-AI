@@ -1,0 +1,17 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+*.db
+dist/
+build/
+artifacts/
+cache/
+coverage/
+uploads/
+ml/data/*.csv
+!.env.example
+.DS_Store
+*.log
+!ml/artifacts/
+!ml/artifacts/**
