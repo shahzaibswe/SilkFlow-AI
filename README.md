@@ -11,12 +11,12 @@ Topic E: SME Finance Copilot.
 
 | Deliverable | Where |
 |---|---|
-| Source code | This repository: `contracts/`, `api/`, `ml/`, `dashboard/`, `scripts/` |
-| Technical documentation | `docs/FINAL_REPORT.md`, `docs/API_SPEC.md`, `docs/DATA_MODEL.md` |
-| Security self-assessment report | `docs/SECURITY_SELF_ASSESSMENT.md` |
-| Execution evidence | `docs/EXECUTION_EVIDENCE.md` (repro commands + recorded 65/65 E2E, 38/38 contract tests, audit chain, honest holdout metrics) |
-| Defense deck (≤10 min) | `docs/SilkFlow_FinTechathon_Defense.pptx` |
-| Demo video (≤5 min) | `docs/SilkFlow_Walkthrough_Voice.mp4` (4:56, narrated, role-by-role) |
+| Technical documentation (required) | `docs/SilkFlow_AI_Technical_Documentation.pdf` (+ `FINAL_REPORT.md`, `API_SPEC.md`, `DATA_MODEL.md`) |
+| Defense PPT ≤10 min (mandatory) | `docs/SilkFlow_FinTechathon_Defense.pptx` |
+| Demonstration video ≤5 min (required) | `docs/SilkFlow_Walkthrough_Voice.mp4` (4:56, narrated, role-by-role) |
+| Source code (optional) | This repository: `contracts/`, `api/`, `ml/`, `dashboard/`, `scripts/` |
+| Security self-assessment report (optional) | `docs/SECURITY_SELF_ASSESSMENT.md` |
+| Execution evidence (optional) | `docs/EXECUTION_EVIDENCE.md` (repro commands + recorded 65/65 E2E, 38/38 contract tests, audit chain, honest holdout metrics) |
 
 ## Repo layout
 
