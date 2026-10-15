@@ -1,4 +1,4 @@
-# SilkFlow AI — Shared Build Contract (API_SPEC)
+# SilkFlow AI Shared Build Contract (API_SPEC)
 
 This file is the single source of truth for interfaces between the four subsystems:
 `contracts/` (Hardhat), `ml/` (models + service), `api/` (FastAPI backend), `dashboard/` (React).
@@ -31,12 +31,12 @@ State machine (enum EscrowState): `Created, Funded, ShipmentConfirmed, Released,
 Order struct: amount, buyer, seller, state, fundedAt, releasedAt.
 
 Functions:
-- `createOrder(bytes32 orderId, uint256 amount, address buyer, address seller)` — only agent/owner. Must equal `amount` of sUSD. Sets state Created (must already be Created).
-- `fund(bytes32 orderId)` — buyer calls; pull-then-push: buyer `approve`s token first, contract does `transferFrom(buyer, address(this), amount)`; state Created→Funded.
-- `confirmShipment(bytes32 orderId)` — only agent; Funded→ShipmentConfirmed.
-- `release(bytes32 orderId)` — only agent; ShipmentConfirmed→Released; transfers amount to seller; sets releasedAt.
-- `raiseDispute(bytes32 orderId)` — buyer or seller; Funded|ShipmentConfirmed→Disputed.
-- `resolve(bytes32 orderId, uint8 decision)` — only reviewer; Disputed→ (0: Released + pay seller) | (1: Refunded + pay buyer).
+- `createOrder(bytes32 orderId, uint256 amount, address buyer, address seller)` only agent/owner. Must equal `amount` of sUSD. Sets state Created (must already be Created).
+- `fund(bytes32 orderId)` buyer calls; pull-then-push: buyer `approve`s token first, contract does `transferFrom(buyer, address(this), amount)`; state Created→Funded.
+- `confirmShipment(bytes32 orderId)`, only agent; Funded→ShipmentConfirmed.
+- `release(bytes32 orderId)`, only agent; ShipmentConfirmed→Released; transfers amount to seller; sets releasedAt.
+- `raiseDispute(bytes32 orderId)` , buyer or seller; Funded|ShipmentConfirmed→Disputed.
+- `resolve(bytes32 orderId, uint8 decision)` , only reviewer; Disputed→ (0: Released + pay seller) | (1: Refunded + pay buyer).
 
 Events (all include `orderId`): `OrderCreated(bytes32 indexed orderId, uint256 amount, address buyer, address seller)`, `OrderFunded(bytes32 orderId, uint256 amount)`, `ShipmentConfirmed(bytes32 orderId)`, `FundsReleased(bytes32 orderId, address seller, uint256 amount)`, `DisputeRaised(bytes32 orderId, address by)`, `DisputeResolved(bytes32 orderId, uint8 decision)`.
 
@@ -67,7 +67,7 @@ Pure Python package importable as `ml` (repo root on PYTHONPATH). Runnable WITHO
 
 - `python -m ml.generate_data` → writes `ml/data/synthetic_trades.csv` (~5000 rows, labeled synthetic; assumptions documented in `docs/DATA_MODEL.md` written by the ML builder).
 - `python -m ml.train` → trains scorer (XGBoost or LR baseline), Isolation Forest, saves to `ml/artifacts/`.
-- `ml/service.py` public API used by the backend (must work after `train` ran; if artifacts missing, auto-train quickly on generated data at import):
+- `ml/service.py` public API used by the backend (must work after `train` ran; if artifacts missing, auto train quickly on generated data at import):
 
 ```python
 score_trade(features: dict) -> {
