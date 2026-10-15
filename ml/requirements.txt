@@ -1,6 +1,6 @@
-# SilkFlow AI - ML subsystem requirements
+# SilkFlow AI ML subsystem requirements
 # Core (required when wheels exist for this Python; the ml package degrades
-# gracefully to pure-stdlib implementations if they are missing, e.g. on
+# gracefully to pure stdlib implementations if they are missing, e.g. on
 # very new Python versions such as 3.15):
 numpy
 pandas
