@@ -1,4 +1,4 @@
-# SilkFlow AI — Execution Evidence
+# SilkFlow AI , Execution Evidence
 
 Date: 2026-10-14. Every result below was produced by commands anyone can re-run from this
 repository. The headline run was recorded on 2026-10-12 against the live local-chain stack and
@@ -40,7 +40,7 @@ python -m pytest tests/                           # ML suite
 
 ## 3. What each suite proves
 
-- **E2E (65 checks)** — role-scoped auth (403 cross-access), token revocation, rate limiting
+- **E2E (65 checks)** role-scoped auth (403 cross-access), token revocation, rate limiting
   (429), pagination, document cross-check, scoring + SHAP reasons, escrow fund → delivery →
   release flow with idempotent duplicate handling, dispute freeze, policy escalation to human
   queue, kill switch, webhook auth/ordering/replay rejection, audit chain verification.
@@ -54,4 +54,4 @@ python -m pytest tests/                           # ML suite
   in `docs/FINAL_REPORT.md`; nothing here claims real funds, real counterparties or mainnet
   transactions.
 - If a re-run environment lacks Node/Python dependencies, the exact blocker is reproducible from
-  the commands above — we state blockers rather than substituting numbers.
+  the commands above we state blockers rather than substituting numbers.
