@@ -26,7 +26,7 @@ anomaly_check({"invoice_to_avg_ratio": 9.0, ...})
 ```
 
 If `ml/artifacts/` is missing, `ml.service` auto-generates data and trains on
-first import — no manual step needed.
+first import no manual step needed.
 
 ## Graceful degradation (Python 3.15 friendly)
 
