@@ -1,4 +1,4 @@
-# SilkFlow AI , Security Self-Assessment
+# SilkFlow AI , Security Self Assessment
 
 Date: 2026-10-14 · Scope: FastAPI backend, React dashboard, Hardhat `SilkEscrow`/`MockStableCoin`,
 policy-limited agent, SME copilot. Prepared for the FinTechathon 2026 AI Track optional deliverable.
