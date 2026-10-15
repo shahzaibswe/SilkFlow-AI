@@ -44,9 +44,9 @@ python -m pytest tests/                           # ML suite
   (429), pagination, document cross-check, scoring + SHAP reasons, escrow fund → delivery →
   release flow with idempotent duplicate handling, dispute freeze, policy escalation to human
   queue, kill switch, webhook auth/ordering/replay rejection, audit chain verification.
-- **Hardhat (38 tests)** — contract-level invariants: funds locked in contract, release only on
+- **Hardhat (38 tests)** contract-level invariants: funds locked in contract, release only on
   verified delivery for the bound order, one release per order, dispute path, revert conditions.
-- **ML suite** — deterministic scorer parity, anomaly screen config (Isolation Forest
+- **ML suite** deterministic scorer parity, anomaly screen config (Isolation Forest
   contamination 0.025), metric reproducibility from `model_meta.json`.
 
 ## 4. Honesty notes
