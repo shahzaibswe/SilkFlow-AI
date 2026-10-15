@@ -67,10 +67,10 @@ as **Limitations**, not presented as done.
   are local deployment artifacts, not mainnet.
 
 ## 3. Known limitations (stated, not hidden)
-1. Local dev chain only — public testnet with independently verifiable tx hashes is roadmap phase 2.
+1. Local dev chain only public testnet with independently verifiable tx hashes is roadmap phase 2.
 2. No real banking/KYC/logistics integrations document checks use our own cross-check rules on
    uploaded demo files.
-3. TLS/infrastructure hardening (HSTS, CSP, WAF) not exercised — single-machine demo deployment.
+3. TLS/infrastructure hardening (HSTS, CSP, WAF) not exercised single-machine demo deployment.
 4. Copilot prompt-injection defense is architectural; no third-party red-team certification exists.
 
 ## 4. Assessment conclusion
