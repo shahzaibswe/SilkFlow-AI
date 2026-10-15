@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SilkFlow AI one-command dev startup (Git Bash / Linux / macOS)
+# SilkFlow AI one command dev startup (Git Bash / Linux / macOS)
 set -u
 root="$(cd "$(dirname "$0")" && pwd)"
 [ -f "$root/.env" ] || cp "$root/.env.example" "$root/.env"
