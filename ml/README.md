@@ -1,4 +1,4 @@
-# SilkFlow AI — ML subsystem
+# SilkFlow AI ML subsystem
 
 Trade credit scoring + anomaly detection for the China → Pakistan corridor
 prototype. **All training data is synthetic** (documented assumptions in
@@ -44,9 +44,9 @@ prints the active stack.
 
 ## Layout
 
-- `generate_data.py` — seeded synthetic dataset with injected anomalies
-- `features.py` — canonical features dict → model-space vector (one-hot categories)
-- `train.py` — scorer + IsolationForest + SHAP/fallback attributions → `artifacts/`
-- `service.py` — spec API: `score_trade`, `anomaly_check`, `retrain`, `FEATURE_LABELS`
-- `pure_model.py` — dependency-free logistic regression / outlier detector
-- `tests/test_service.py` — API contract, monotonicity, anomaly, retrain tests
+- `generate_data.py`, seeded synthetic dataset with injected anomalies
+- `features.py` , canonical features dict → model-space vector (one-hot categories)
+- `train.py` , scorer + IsolationForest + SHAP/fallback attributions → `artifacts/`
+- `service.py` , spec API: `score_trade`, `anomaly_check`, `retrain`, `FEATURE_LABELS`
+- `pure_model.py` , dependency-free logistic regression / outlier detector
+- `tests/test_service.py` ,API contract, monotonicity, anomaly, retrain tests
