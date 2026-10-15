@@ -1,4 +1,4 @@
-"""ml.service — public ML API for the SilkFlow AI backend.
+"""ml.service public ML API for the SilkFlow AI backend.
 
 Implements docs/API_SPEC.md §2 exactly:
 
@@ -17,7 +17,7 @@ Behaviour
 * Explanations use SHAP when installed, otherwise a documented baseline-
   perturbation attribution fallback (and a coefficient view for LR).
 
-ALL TRAINING DATA IS SYNTHETIC — scores are demo-quality, not financial
+ALL TRAINING DATA IS SYNTHETIC scores are demo-quality, not financial
 advice (see docs/DATA_MODEL.md).
 """
 
