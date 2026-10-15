@@ -32,9 +32,9 @@ python -m pytest tests/                           # ML suite
 |---|---|---|
 | End-to-end suite vs live chain + API | **65 passed / 0 failed** | `python scripts/e2e_test.py` prints each check; run recorded in `docs/FINAL_REPORT.md` §E |
 | Smart-contract suite (fund/release/dispute/replay/one-release) | **38 passed / 0 failed** | `npx hardhat test` in `contracts/` |
-| ML holdout metrics (1,000 rows, seed 7, fixed split) | XGBoost AUC 0.725 · logistic baseline AUC **0.763** (baseline wins — reported as measured) | `ml/artifacts/model_meta.json`, `docs/FINAL_REPORT.md` §D |
+| ML holdout metrics (1,000 rows, seed 7, fixed split) | XGBoost AUC 0.725 · logistic baseline AUC **0.763** (baseline wins reported as measured) | `ml/artifacts/model_meta.json`, `docs/FINAL_REPORT.md` §D |
 | Audit hash chain | 199 entries, verifier `audit_valid: true`; tamper demo turns it red | Reviewer → Audit trail page; screenshots `docs/screenshots/13_audit_verified.png` |
-| On-chain deployment | `SilkEscrow 0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82`, `MockStableCoin 0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0` — **local Hardhat dev chain** | `contracts/deployments/latest.json` |
+| On-chain deployment | `SilkEscrow 0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82`, `MockStableCoin 0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0` **local Hardhat dev chain** | `contracts/deployments/latest.json` |
 | Live tx hashes from E2E run | Recorded with each escrow event in the audit ledger | Order detail / audit pages; hashes surfaced via `HashLink` component |
 | UI walkthrough (all three portals) | Screenshot set 01–15 + narrated demo video | `docs/screenshots/`, `docs/SilkFlow_Walkthrough_Voice.mp4` (4:56) |
 
