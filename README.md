@@ -4,7 +4,7 @@ SME finance copilot for cross-border trade: explainable credit scoring, weekly c
 forecasting with negative-balance alerts, ranked simulated financing options, a grounded
 financial copilot, on-chain escrow (live local chain/testnet with simulated fallback),
 policy-limited autonomous settlement, and a full audit hash chain. Built for the 2026
-Shenzhen International Fintech Competition (FinTechathon), International Track —
+Shenzhen International Fintech Competition (FinTechathon), International Track 
 Topic E: SME Finance Copilot.
 
 ## FinTechathon 2026 submission deliverables
@@ -53,9 +53,9 @@ Or use the one-command script: `./run.sh` (or `run.ps1` on Windows PowerShell).
 
 ## Demo accounts (password for all: `Password123!`)
 
-- Exporter: `seller@coretech.io` — second exporter `seller2@coretech.io` (deliberately
-  low opening balance → live cash-gap alert demo) — Buyer: `buyer@globalmart.pk`
-- Reviewer: `reviewer@coretech.io` — Admin: `admin@coretech.io`
+- Exporter: `seller@coretech.io`, second exporter `seller2@coretech.io` (deliberately
+  low opening balance → live cash-gap alert demo) , Buyer: `buyer@globalmart.pk`
+- Reviewer: `reviewer@coretech.io` , Admin: `admin@coretech.io`
 
 ## Demo script (5 scenarios)
 
@@ -73,7 +73,7 @@ Or use the one-command script: `./run.sh` (or `run.ps1` on Windows PowerShell).
 
 ## Tests
 
-`python scripts/e2e_test.py` — 65 assertions covering auth/RBAC, rate limiting, full
+`python scripts/e2e_test.py`, 65 assertions covering auth/RBAC, rate limiting, full
 settlement on the live local chain, policy holds, disputes, audit tamper detection,
 pagination, idempotent financing apply, cash-gap forecasting, scenarios, copilot scoping,
 and ML metrics incl. the logistic-regression baseline. Contracts: `cd contracts && npx hardhat test`. ML: `cd ml && python -m ml.tests.test_service`.
