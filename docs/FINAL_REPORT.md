@@ -1,4 +1,4 @@
-# SilkFlow AI — Final Technical, Functional, Security, AI-Model & API Audit Report
+# SilkFlow AI Final Technical, Functional, Security, AI Model & API Audit Report
 
 Date: 2026-10-12 · Build: FastAPI + React + Hardhat local chain + real XGBoost/SHAP/IsolationForest
 Stack state at time of writing: chain **live**, API healthy (`audit_valid: true`), UI built (0 errors),
@@ -13,14 +13,14 @@ This report distinguishes strictly between (A) spec requirements, (B) implemente
 
 All three v2 business requirements are implemented and tested end to end:
 
-1. **Financial analysis & explainable trade-risk assessment** — XGBoost credit scorer with SHAP
+1. **Financial analysis & explainable trade-risk assessment** , XGBoost credit scorer with SHAP
    explanations, Isolation-Forest anomaly detection, logistic-regression baseline, risk bands,
    suggested terms, FX exposure notes.
-2. **Cash-flow forecasting, alerts & financing recommendations** — deterministic weekly forecaster
+2. **Cash-flow forecasting, alerts & financing recommendations** , deterministic weekly forecaster
    (opening balance + scheduled receipts − payments), negative-balance gap alerts, what-if delay
    scenarios that never mutate persisted state, three ranked simulated financing offers per scored
    order with idempotent application.
-3. **Policy-limited AI agent** — observe → decide → policy-check → act → audit loop; kill switch,
+3. **Policy-limited AI agent** , observe → decide → policy-check → act → audit loop; kill switch,
    auto-release limit, dispute freeze, one-release-per-order; money movement only through the
    escrow smart contract after explicit policy checks. The LLM never authorizes or computes money.
 
@@ -50,26 +50,26 @@ All three v2 business requirements are implemented and tested end to end:
 Runtime: Python 3.15.0 · xgboost 3.4.1 · scikit-learn 1.9.1 · shap 0.53.0 · numpy 2.5.4 · pandas 3.0.6.
 All models run **locally** (no external inference API).
 
-**Credit scorer (main candidate)** — XGBoost `XGBClassifier`: 250 trees, max_depth 4, lr 0.08,
+**Credit scorer (main candidate)** , XGBoost `XGBClassifier`: 250 trees, max_depth 4, lr 0.08,
 subsample 0.9, colsample_bytree 0.9, reg_lambda 1.0, seed 42. Local, artifact
 `ml/artifacts/model_artifacts.pkl` (joblib), version `v1.3-synth` (+`.rN` per retrain; active is `v1.3-synth.r1`).
-**Logistic Regression baseline** — sklearn `LogisticRegression(max_iter=2000, C=1.0)`, trained on the
+**Logistic Regression baseline** , sklearn `LogisticRegression(max_iter=2000, C=1.0)`, trained on the
 identical seeded 80/20 split (seed 7), always reported side by side.
 **Holdout (1,000 rows, synthetic):** XGBoost AUC 0.725 · acc 0.775 · precision 0.810 · recall 0.921 ·
 F1 0.862 · CM TP 703 / FP 165 / FN 60 / TN 72. LR baseline AUC 0.763 · acc 0.790 · F1 0.873.
 **Honest finding: the simple baseline beats the boosted model on this synthetic signal.** This is
 surfaced in the UI ("reported honestly, not curated") and in `GET /api/models` metrics.
-**Explanations** — SHAP `TreeExplainer` mean|SHAP per feature, verified to accompany every score;
+**Explanations** , SHAP `TreeExplainer` mean|SHAP per feature, verified to accompany every score;
 direction/top-5 identical to the perturbation fallback used when shap is absent.
-**Anomaly detector** — sklearn `IsolationForest(n_estimators=200, contamination=0.025, random_state=42)`
+**Anomaly detector** , sklearn `IsolationForest(n_estimators=200, contamination=0.025, random_state=42)`
 on the 8-feature canonical vector; output is a *warning that routes to human review*, never a fraud verdict.
 **Feature schema (8):** past_orders, on_time_rate, buyer_avg_days_to_pay, buyer_country_risk,
 invoice_to_avg_ratio, doc_discrepancy_count, payment_term_days, fx_volatility (+ goods-category one-hots).
 Missing values fall back to corridor medians; no target leakage (target is only `trade_completed_on_time`).
-**Data** — 100% synthetic (`ml/generate_data.py`), labelled everywhere (API `synthetic: true`, UI, docs).
+**Data** , 100% synthetic (`ml/generate_data.py`), labelled everywhere (API `synthetic: true`, UI, docs).
 Not validated banking-grade prediction; pilot retrain plan in `docs/DATA_MODEL.md` §4.
 
-**LLM (document checker + copilot narrator)** — integration implemented for the OpenAI Chat
+**LLM (document checker + copilot narrator)** , integration implemented for the OpenAI Chat
 Completions API (`https://api.openai.com/v1/chat/completions`, model `OPENAI_MODEL` default
 `gpt-4o-mini`, temperature 0.2, max_tokens 300, timeout 20 s, structured-JSON prompt for the
 checker with schema validation of the reply). **`OPENAI_API_KEY` is NOT set in this environment,
@@ -123,10 +123,10 @@ Input validation via typed Pydantic schemas on every write endpoint.
 1. **No OpenAI key in this environment** → document checker runs rule-based; copilot runs
    deterministic templates (both labelled). Setting `OPENAI_API_KEY` in `.env` activates the LLM path.
 2. **Frankfurter has no PKR** → demo corridor USD/PKR uses cached/synthetic rates, labelled as such.
-3. **Local Hardhat chain, not Sepolia** — deploying to Sepolia needs a paid/free RPC key and testnet
+3. **Local Hardhat chain, not Sepolia** , deploying to Sepolia needs a paid/free RPC key and testnet
    ETH, neither available here. Contract code and client are network-agnostic (config swap only).
 4. **SQLite**, per spec's allowance for local development; PostgreSQL was not exercised.
-5. **No Alembic migrations** — schema changes are applied by wiping `api/silkflow.db` + redeploying
+5. **No Alembic migrations** , schema changes are applied by wiping `api/silkflow.db` + redeploying
    contracts (order keys are per-contract) and auto-reseeding.
 6. **Offers/financing are simulated**; no real lender integration; no email/SMS notifications
    (in-app alert table only).
