@@ -1,4 +1,4 @@
-# SilkFlow AI one-command dev startup (Windows PowerShell)
+# SilkFlow AI one command dev startup (Windows PowerShell)
 # Starts: Hardhat node + deploy (if contracts built) -> backend -> dashboard.
 # All steps degrade gracefully: missing chain => backend uses simulated chain.
 $ErrorActionPreference = "Continue"
