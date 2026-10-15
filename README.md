@@ -1,8 +1,8 @@
 # SilkFlow AI
 
-SME finance copilot for cross-border trade: explainable credit scoring, weekly cash-flow
-forecasting with negative-balance alerts, ranked simulated financing options, a grounded
-financial copilot, on-chain escrow (live local chain/testnet with simulated fallback),
+SME finance copilot for cross border trade: explainable credit scoring, weekly cash flow
+forecasting with negative balance alerts, ranked simulated financing options, a grounded
+financial copilot, on chain escrow (live local chain/testnet with simulated fallback),
 policy-limited autonomous settlement, and a full audit hash chain. Built for the 2026
 Shenzhen International Fintech Competition (FinTechathon), International Track 
 Topic E: SME Finance Copilot.
@@ -33,7 +33,7 @@ Topic E: SME Finance Copilot.
 ```bash
 cp .env.example .env
 
-# 1. Smart contract (optional — backend auto-falls back to simulated chain)
+# 1. Smart contract (optional backend auto-falls back to simulated chain)
 cd contracts && npm install && npx hardhat node      # terminal A
 npx hardhat run scripts/deploy.js --network localhost  # terminal B
 
